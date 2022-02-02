@@ -9,12 +9,16 @@ def get_details_report(stock):
         else:
             produtos_por_empresa[item["nome_da_empresa"]] = 1
 
+    details = ''
+
+    for key, value in produtos_por_empresa.items():
+        details += (f"- {key}: {value}\n")
+
     return (
         "Produtos estocados por empresa: \n"
-        f"- Forces of Nature: {produtos_por_empresa['Forces of Nature']}\n"
-        f"- sanofi-aventis U.S. LLC: {produtos_por_empresa['sanofi-aventis U.S. LLC']}\n"  # noqa: E501
-        f"- Newton Laboratories: {produtos_por_empresa['Newton Laboratories']}\n"  # noqa: E501
-     )
+        f"{details}"
+        ""
+    )
 
 
 def format_complete_report(simple_report, details_report):
